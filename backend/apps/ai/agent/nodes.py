@@ -1,3 +1,4 @@
+```python
 """LangGraph nodes for the Agentic RAG workflow."""
 
 from __future__ import annotations
@@ -116,6 +117,8 @@ class AgentNodes:
 
             filtered_chunks = self.filter_chunks_by_metadata(new_chunks, metadata, limit)
             state["context_chunks"] = filtered_chunks[:limit]
+            state["limit"] = limit
+            state["similarity_threshold"] = threshold
 
             state["feedback"] = "Expand and refine answer using newly retrieved context."
         else:
@@ -258,3 +261,4 @@ class AgentNodes:
                 "justification": "Evaluator error or invalid response.",
                 "requires_more_context": False,
             }
+```
